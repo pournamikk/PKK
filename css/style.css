@@ -10,7 +10,14 @@
 .f30 {
   font-size: 25px !important;
 }
-
+.btn-resume{
+  width: 200px;
+  border-radius: 25px !important;
+  font-size: 15px !important;
+}
+.line-height{
+  line-height: 35px;
+}
 body {
   background: #ffffff;
   color: #898989;
@@ -273,7 +280,7 @@ nav ul li a {
 }
 
 .header-content p {
-  font-size: 13px;
+  font-size: 15px;
   letter-spacing: 5px;
   margin-top: 0;
   margin-bottom: 30px;
@@ -342,12 +349,14 @@ nav ul li a {
   padding-bottom: 80px;
   padding-top: 80px;
 }
-
+.fa {
+  color: #B69E7C;
+}
 /*-----------------------------------------------------------------------------------*/
 /*   Services
 /*-----------------------------------------------------------------------------------*/
 
-#services {
+#skills {
   background: #fff;
   position: relative;
   padding-bottom: 80px;
@@ -676,7 +685,7 @@ nav ul li a {
   display: block;
   width: 2px;
   height: 100%;
-  background: #ff794a;
+  background: #B69E7C;
   margin: 0 auto;
   position: absolute;
   top: 0;
@@ -718,15 +727,21 @@ nav ul li a {
   left: 0;
   transition: all 0.33s ease-out 0s;
 }
-
+.highlight{
+  color: #111;
+  font-weight: bold;
+}
+.text-blue{
+  color:blue;
+}
 .main-timeline .icon:before {
   background: #fff;
-  border: 2px solid #00a79c;
+  border: 2px solid #111;
   left: -3px;
 }
 
 .main-timeline .icon:after {
-  border: 2px solid #ff794a;
+  border: 2px solid #B69E7C;
   left: 3px;
 }
 
@@ -748,7 +763,7 @@ nav ul li a {
   content: "";
   width: 32.5%;
   height: 2px;
-  background: #ff794a;
+  background: #B69E7C;
   margin: auto 0;
   position: absolute;
   top: 0;
@@ -782,12 +797,12 @@ nav ul li a {
 
 .main-timeline .date-outer:before {
   background: #fff;
-  border: 2px solid #00a79c;
+  border: 2px solid #111;
   left: -6px;
 }
 
 .main-timeline .date-outer:after {
-  border: 2px solid #ff794a;
+  border: 2px solid #B69E7C;
   left: 6px;
 }
 

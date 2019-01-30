@@ -57,8 +57,10 @@
         <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
 
         <ul class="nav-menu list-unstyled">
-          <li><a href="index.html#home" class="smoothScroll">Home</a></li>
+          <li><a href="index.html#header" class="smoothScroll">Home</a></li>
           <li><a href="index.html#about" class="smoothScroll">About</a></li>
+          <li><a href="index.html#skills" class="smoothScroll">Skills</a></li>
+          <li><a href="index.html#story" class="smoothScroll">Story</a></li>
           <li><a href="index.html#portfolio" class="smoothScroll">Portfolio</a></li>
           <li><a href="index.html#contact" class="smoothScroll">Contact</a></li>
         </ul>
@@ -70,7 +72,7 @@
   <div class="main-content paddsection">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-9 col-md-offset-2">
           <div class="row">
             <div class="container-main single-main">
               <div class="col-md-12">
@@ -88,16 +90,103 @@
                         <li class="commont"><i class="ion-ios-heart-outline"></i><a href="#">3 Comments</a></li>
                       </ul>
                     </div> -->
-                    <p class="mb-30">This assignment was part of Adaptive Systems course at UPM where I had to create a database of ratings for 20 movies by 50 users and incorporate Collaborative Filtering (25% and 70% empty cells for ratings) using Pearson Correlation and analysing the data to understand the nature of Recommender System and Sparsity problem of ratings.</p>
+                    <p class="mb-30">This assignment was part of Adaptive Systems course at UPM where I had to create a
+                      database of ratings for 20 movies by 50 users and incorporate Collaborative Filtering (25% and
+                      70% empty cells for ratings) using Pearson Correlation and analysing the data to understand the
+                      nature of Recommender System and Sparsity problem of ratings.</p>
 
-                    <hr>
                     <div class="journal-txt">
-                      <h4><a href="#">Report</a></h4>
+                      <h4><a href="#">Excel Sheet</a></h4>
+                      <hr>
                     </div>
-                    <iframe src="/reports/Collaborative Filtering_Final Report.pdf#view=FitH" type="application/pdf" width="100%"
-                      height="600px"></iframe>
-                    <iframe src="/reports/Data Set.pdf#view=FitH" type="application/pdf" width="100%"
-                      height="600px"></iframe>
+                    <a href="reports/Data Set.xlsx" download="" class="btn btn-default text-white">Dataset Excel Sheet</a>
+                    <div class="journal-txt mt-5">
+                      <h4><a href="#">Code</a></h4>
+                      <hr>
+                    </div>
+                    <pre>
+                        <code>
+# IMPORTING PACKAGES
+
+import pandas as pd
+import math
+import numpy as np
+
+
+# READ EXCEL
+df_ratings = pd.read_excel('Data set.xlsx',sheet_name='Sparcity rating (75%)')
+
+#CONVERT TO FLOAT (, replaced with .)
+def convert_to_float(x):
+    float_value = str(x).replace(',','.')
+    return float(float_value)
+
+for col in df_ratings.columns:
+    df_ratings[col] = df_ratings[col].apply(convert_to_float)
+
+
+#CORRELATION PEARSON INBUILT
+corr_matrix = df_ratings.corr(method='pearson')
+corr_matrix.to_excel('correlation_python_inbuilt.xlsx')
+
+
+
+# PEARSON CORRELATION USING FORMULA
+
+def average(x):
+    assert len(x) > 0
+    return float(sum(x)) / len(x)
+
+def pearson_def(x, y):
+    assert len(x) == len(y)
+    n = len(x)
+    if (n > 0):
+        avg_x = average(x)
+        avg_y = average(y)
+        diffprod = 0
+        xdiff2 = 0
+        ydiff2 = 0
+        for idx in range(n):
+            xdiff = x[idx] - avg_x
+            ydiff = y[idx] - avg_y
+            diffprod += xdiff * ydiff
+            xdiff2 += xdiff * xdiff
+            ydiff2 += ydiff * ydiff
+
+        return diffprod / math.sqrt(xdiff2 * ydiff2)
+    else: 
+        return None
+
+# In[105]:
+
+
+correlation_matrix = []
+for user1 in df_ratings.columns:
+    for user2 in df_ratings.columns:
+        a = df_ratings[user1].values
+        b = df_ratings[user2].values
+        bad = ~np.logical_or(np.isnan(a), np.isnan(b))
+        a = np.compress(bad, a)
+        b = np.compress(bad, b)
+        corr_user = pearson_def(a, b)
+        user_correlation = (user1,user2,corr_user)
+        correlation_matrix.append(user_correlation)
+
+
+# In[108]:
+
+
+df_corr = pd.DataFrame(correlation_matrix)
+df_corr = df_corr.pivot(index=0, columns=1, values=2)
+df_corr.to_excel('correlation_data_sparse.xlsx')                            
+                        </code>
+                      </pre>
+                    <div class="journal-txt mt-4">
+                      <h4><a href="#">Report</a></h4>
+                      <hr>
+                    </div>
+                    <iframe src="/reports/Collaborative Filtering_Final Report.pdf#view=FitH" type="application/pdf"
+                      width="100%" height="600px"></iframe>
                   </div>
                 </div>
               </div>
@@ -116,12 +205,8 @@
       <div class="socials-media text-center">
 
         <ul class="list-unstyled">
-          <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-          <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-          <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-          <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-          <li><a href="#"><i class="ion-social-tumblr"></i></a></li>
-          <li><a href="#"><i class="ion-social-dribbble"></i></a></li>
+          <li><a target="_blank" href="https://join.skype.com/invite/nHJZXLUp7gkE"><i class="ion-social-skype"></i></a></li>
+          <li><a target="_blank" href="https://www.linkedin.com/in/pournamikk"><i class="ion-social-linkedin"></i></a></li>
         </ul>
 
       </div>

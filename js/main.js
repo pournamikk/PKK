@@ -79,7 +79,7 @@ $(document).ready(function() {
 
   $(function() {
     typed.typed({
-      strings: ["Pammu for you guys", "in love with Designing", "Aspiring UI/UX Designer"],
+      strings: ["Pournami Krishnan", "in love with Designing", "A UX Designer"],
       typeSpeed: 100,
       loop: true,
     });
