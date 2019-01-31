@@ -12,6 +12,15 @@
  * Copyright 2013-2018 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-freelancer/blob/master/LICENSE)
  */
+ .carousel-indicators {
+  bottom: -30px !important;
+}
+.carousel-indicators .active {
+  background-color: #000 !important;
+}
+.carousel-indicators li {
+  background-color:#d3b996;
+}
 .text-gold{
   color: #b69e7c!important
 }
@@ -107,7 +116,7 @@ header.masthead h2 {
   -webkit-transition: all ease .5s;
   transition: all ease .5s;
   opacity: 0;
-  background-color: rgba(24, 188, 156, .9)
+  background-color: #b69e7c;
 }
 
 .portfolio .portfolio-item .portfolio-item-caption:hover {
