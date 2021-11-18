@@ -122,7 +122,7 @@ $(document).ready(function() {
 
   $(function() {
     typed.typed({
-      strings: ["Pournami Krishnan", "passionate about User Experience", "A UX Designer"],
+      strings: ["Pournami Krishnan", "passionate about User Experience", "A UX Researcher"],
       typeSpeed: 100,
       loop: true,
     });
